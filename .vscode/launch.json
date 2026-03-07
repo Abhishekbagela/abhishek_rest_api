@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:abhishek_rest_api}",
+            "name": "Debug abhishek_rest_api",
+            "target": "abhishek_rest_api",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug abhishek_rest_api"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:abhishek_rest_api}",
+            "name": "Release abhishek_rest_api",
+            "target": "abhishek_rest_api",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release abhishek_rest_api"
+        }
+    ]
+}
