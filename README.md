@@ -61,10 +61,17 @@ Once the server is running, explore the following:
 - **Database Status**: [https://localhost:8080/lifecycle/status](https://localhost:8080/lifecycle/status)
 
 ### Core Endpoints:
-- `GET /movies` : List all movies.
-- `POST /movies/sync` : Trigger an external data synchronization.
-- `GET /users` : List all users.
-- `GET /images` : List all image records.
+| Feature | Endpoint | Method(s) |
+| :--- | :--- | :--- |
+| **Movies** | `/movies` | `GET`, `POST` |
+| | `/movies/:id` | `GET`, `PUT`, `DELETE` |
+| | `/movies/sync` | `POST` |
+| **Users** | `/users` | `GET`, `POST` |
+| | `/users/:id` | `GET`, `PUT`, `DELETE` |
+| **Images** | `/images` | `GET`, `POST` |
+| | `/images/:id` | `GET`, `PUT`, `DELETE` |
+| **System** | `/lifecycle/status` | `GET` |
+| | `/lifecycle/restart` | `POST` |
 
 ---
 

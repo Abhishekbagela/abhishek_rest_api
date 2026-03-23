@@ -7,13 +7,16 @@ func routes(_ app: Application) throws {
         """
         Welcome to the Abhishek Rest API! 🚀
         
-        Available Endpoints:
-        - GET  /movies          : List all movies (synced from external API)
-        - GET  /users           : List all users
-        - GET  /images          : List all images
-        - GET  /lifecycle/status : Check server & database health
-        - GET  /swagger         : View interactive API documentation
-        - GET  /openapi.json    : Download OpenAPI specification
+        Available Endpoints & Actions:
+        -------------------------------------------
+        🎬 MOVIES   : GET /movies, POST /movies, POST /movies/sync,
+                      GET/PUT/DELETE /movies/:id
+        👤 USERS    : GET /users, POST /users, GET/PUT/DELETE /users/:id
+        🖼 IMAGES   : GET /images, POST /images, GET/PUT/DELETE /images/:id
+        ⚙️ SYSTEM   : GET /lifecycle/status, POST /lifecycle/restart
+        📚 SWAGGER  : GET /swagger (Interactive API Explorer)
+        -------------------------------------------
+        Hint: Use the /swagger endpoint to test all actions!
         """
     }
     

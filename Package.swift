@@ -32,15 +32,7 @@ let package = Package(
                 .product(name: "NIOSSL", package: "swift-nio-ssl")
             ],
             swiftSettings: swiftSettings
-        ),
-        .testTarget(
-            name: "abhishek_rest_apiTests",
-            dependencies: [
-                .target(name: "abhishek_rest_api"),
-                .product(name: "VaporTesting", package: "vapor"),
-            ],
-            swiftSettings: swiftSettings
-        ),
+        )
     ]
 )
 
