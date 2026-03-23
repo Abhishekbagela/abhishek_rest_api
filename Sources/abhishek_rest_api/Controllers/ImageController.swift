@@ -21,8 +21,8 @@ struct ImageController: RouteCollection {
 
     // GET /images
     @Sendable
-    func index(req: Request) async throws -> [ImageModel] {
-        try await ImageModel.query(on: req.db).all()
+    func index(req: Request) async throws -> Page<ImageModel> {
+        try await ImageModel.query(on: req.db).paginate(for: req)
     }
 
     // POST /images

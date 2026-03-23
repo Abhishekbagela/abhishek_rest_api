@@ -38,8 +38,8 @@ struct UserController: UserControllerProtocol {
     }
     
     @Sendable
-    func fetchAll(_ request: Request) async throws -> [UserModel] {
-        try await UserModel.query(on: request.db).all()
+    func fetchAll(_ request: Request) async throws -> Page<UserModel> {
+        try await UserModel.query(on: request.db).paginate(for: request)
     }
     
     @Sendable
@@ -76,7 +76,7 @@ struct UserController: UserControllerProtocol {
 protocol UserControllerProtocol: RouteCollection {
     func boot(routes: any RoutesBuilder) throws
     func fetch(_ request: Request) async throws -> UserModel
-    func fetchAll(_ request: Request) async throws -> [UserModel]
+    func fetchAll(_ request: Request) async throws -> Page<UserModel>
     func add(_ request: Request) async throws -> UserModel
     func update(_ request: Request) async throws -> UserModel
     func remove(_ request: Request) async throws -> HTTPStatus
