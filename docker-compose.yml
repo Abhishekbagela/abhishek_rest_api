@@ -23,7 +23,36 @@ services:
       context: .
     environment:
       <<: *shared_environment
+      DATABASE_HOST: db
+      DATABASE_PORT: 3306
+      DATABASE_USERNAME: vapor_user
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: common_db
+      CERT_PATH: /app/cert.pem
+      KEY_PATH: /app/key.pem
     ports:
       - '8080:8080'
-    # user: '0' # uncomment to run as root for testing purposes even though Dockerfile defines 'vapor' user.
-    command: ["serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
+      - '443:8080'
+    restart: always
+    command: ["serve", "--env", "production", "--hostname", "0.0.0.0"]
+    volumes:
+      - ./cert.pem:/app/cert.pem:ro
+      - ./key.pem:/app/key.pem:ro
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: common_db
+      MYSQL_USER: vapor_user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root_password
+    ports:
+      - '3307:3306'
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+

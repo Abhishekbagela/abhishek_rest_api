@@ -1,3 +1,18 @@
+# Local Secrets & SSL
+cert.pem
+key.pem
+*.pem
+
+# Logs
+*.log
+server.log
+
+# .env files
+.env
+.env.*
+!.env.example
+
+# Build & OS
 Packages
 .build
 xcuserdata
@@ -6,7 +21,4 @@ DerivedData/
 .DS_Store
 db.sqlite
 .swiftpm
-.env
-.env.*
-!.env.example
 default.profraw
