@@ -11,8 +11,9 @@ A professional, fully-featured REST API built with the **Vapor** web framework. 
 
 ## ✨ Key Features
 
-- **Full CRUD API**: Robust endpoints for managing Movies, Users, and Images.
-- **Automated Movie Sync**: Connects to a paginated external API (`jsonfakery.com`) and performs high-speed batch synchronization into MySQL.
+- **Full CRUD API**: Robust endpoints for managing Movies, Users, and Images with integrated **Pagination** support (`?page=1&per=10`).
+- **500-Movie Sync**: Connects to an external API and performs high-speed, multi-page synchronization of 500 movies into MySQL, with built-in data-loss protection for incomplete records.
+- **Standardized Responses**: All list endpoints return a consistent JSON structure with items and pagination metadata (`total`, `page`, `per`).
 - **Dockerized Architecture**: Simplified deployment with pre-configured `docker-compose.yml`.
 - **Safari-Trusted HTTPS**: Integrated SSL support via `mkcert` for a standard, secure browsing experience (`https://localhost`).
 - **Interactive Documentation**: Full **Swagger UI** integration for visual API testing.
@@ -72,6 +73,30 @@ Once the server is running, explore the following:
 | | `/images/:id` | `GET`, `PUT`, `DELETE` |
 | **System** | `/lifecycle/status` | `GET` |
 | | `/lifecycle/restart` | `POST` |
+
+---
+
+## 📄 Pagination Support
+
+All list endpoints (`/movies`, `/users`, `/images`) support pagination via query parameters:
+
+- `page`: The page number (default: 1)
+- `per`: Number of items per page (default: 10, max: 100)
+
+**Example Request:**
+`GET https://localhost:8080/movies?page=1&per=5`
+
+**Example Response:**
+```json
+{
+  "items": [...],
+  "metadata": {
+    "total": 500,
+    "per": 5,
+    "page": 1
+  }
+}
+```
 
 ---
 
